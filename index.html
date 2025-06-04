@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Calendar</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="https://kit.fontawesome.com/a3502f08c4.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div id="spinner" class="spinner-overlay">
+    <div class="spinner"></div>
+  </div>
+<button id="dark-mode-toggle" class="dark-toggle">🌙 Toggle Dark Mode</button>
+  <div class="calendar-container">
+    <aside class="sidebar">
+      <i id="prev" class="fa-solid fa-angle-left"></i><span id="year">2020</span><i id="next" class="fa-solid fa-angle-right"></i>
+      <ul id="month">
+        <li class="month-tab">January</li>
+        <li class="month-tab">February</li>
+        <li class="month-tab">March</li>
+        <li class="month-tab">April</li>
+        <li class="month-tab">May</li>
+        <li class="month-tab">June</li>
+        <li class="month-tab">July</li>
+        <li class="month-tab">August</li>
+        <li class="month-tab">September</li>
+        <li class="month-tab">October</li>
+        <li class="month-tab">November</li>
+        <li class="month-tab">December</li>
+      </ul>
+    </aside>
+
+    <main class="calendar">
+      <h2 id="current-month" class="month">MAY</h2>
+      <div class="weekdays">
+        <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+      </div>
+      <div id="days" class="days"></div>
+    </main>
+
+    <aside class="details">
+      <h3 id="day-event">30 July 2025</h3>
+      
+      <form id="task-form">
+        <input type="text" id="task-input" placeholder="Enter new task" required />
+        <select id="category-select" required>
+          <option value="" disabled selected>Select category</option>
+          <option value="work">Work</option>
+          <option value="personal">Personal</option>
+          <option value="ministry">Ministry</option>
+        </select>
+        <button id="submit-btn">Add Task</button>
+      </form>
+
+      <div id="to-do-list">
+        <!-- Categories -->
+        <div class="category work">
+          <h2><span class="dot works"></span> Work</h2>
+          <ul class="todo-list"id="work"><div class="no-list">📝 No to do list, add one</div>
+          </ul>
+        </div>
+
+        <div class="category personal">
+          <h2><span class="dot personals"></span> Personal</h2>
+          <ul class="todo-list" id="personal">
+            <div class="no-list">📝 No to do list, add one</div>
+          </ul>
+        </div>
+
+        <div class="category ministry">
+          <h2><span class="dot ministries"></span> Ministry</h2>
+          <ul class="todo-list" id="ministry">
+            <div class="no-list">📝 No to do list, add one</div>
+          </ul>
+        </div>
+      </div>
+    </aside>
+  </div>
+</body>
+</html>
