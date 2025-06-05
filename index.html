@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Calendar</title>
-  <link rel="icon" href="calendar.png" type="image/x-icon"> 
   <link rel="stylesheet" href="calendar.css" />
+  <script src="calendar.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <script src="https://kit.fontawesome.com/a3502f08c4.js" crossorigin="anonymous"></script>
 </head>
@@ -42,10 +42,15 @@
     </main>
 
     <aside class="details">
-      <h3 id="day-event">30 July 2025</h3>
+      <h3 id="day-event"></h3>
       
       <form id="task-form">
+        <input type="text" id="task-search" placeholder="🔍 Search tasks..." />
+        <div id="modal" class="modal hidden">
+          <p>Task comment's date is 22 June 2025</p>
+        </div>
         <input type="text" id="task-input" placeholder="Enter new task" required />
+       
         <select id="category-select" required>
           <option value="" disabled selected>Select category</option>
           <option value="work">Work</option>
@@ -79,6 +84,5 @@
       </div>
     </aside>
   </div>
- <script src="calendar.js"></script> 
 </body>
 </html>
