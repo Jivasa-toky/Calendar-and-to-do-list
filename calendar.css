@@ -27,6 +27,7 @@ body {
   background: linear-gradient(135deg, var(--bg-color), #e0eafc);
   color: var(--text-color);
   overflow: auto;
+  transition: background 0.5s, color 0.5s;
 }
 
 :focus {
@@ -39,7 +40,7 @@ body {
   position: fixed;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background-color: white;
+  background-color: var(--bg-color);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -79,7 +80,6 @@ body {
 .dark-toggle:hover {
   background-color: #7a4fff;
 }
-
 
 /* Layout */
 .calendar-container {
@@ -250,9 +250,50 @@ ul.todo-list li {
   animation: fadeIn 0.5s ease-in;
 }
 
+body.dark-mode .no-list {
+  background-color: #2c2c3e;
+  color: #ddd;
+  border-left-color: var(--accent-color);
+}
+
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+#task-search {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  transition: border-color 0.3s;
+}
+
+#task-search:focus {
+  border-color: var(--accent-color);
+}
+
+.modal{
+   width: 100%;
+   margin-bottom: 15px;
+   border: 1px solid #ccc;
+   padding: 10px;
+   border-radius: 6px;
+   transition: border-color 0.3s;
+}
+
+.hidden {
+  transform: translateX(-200vw);
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+
+}
+
+.modal:focus {
+  border-color: var(--accent-color);
 }
 
 /* Task Form */
@@ -303,6 +344,16 @@ ul.todo-list li {
 
 .delete-btn:hover {
   color: darkred;
+}
+
+/* Scrollbar Styling */
+.details::-webkit-scrollbar {
+  width: 8px;
+}
+
+.details::-webkit-scrollbar-thumb {
+  background-color: var(--accent-color);
+  border-radius: 4px;
 }
 
 /* Responsive */
@@ -358,5 +409,4 @@ ul.todo-list li {
 
   .details h3 {
     font-size: 18px;
-  }
-}
+ 
