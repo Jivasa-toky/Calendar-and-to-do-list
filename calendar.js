@@ -1,1 +1,236 @@
-const _0x4612fa=_0x2e85;(function(_0x1e490e,_0x3d6fbe){const _0xcf0c5b=_0x2e85,_0x3490d0=_0x1e490e();while(!![]){try{const _0x1a620e=parseInt(_0xcf0c5b(0x195))/0x1+-parseInt(_0xcf0c5b(0x1d9))/0x2+-parseInt(_0xcf0c5b(0x1d8))/0x3*(-parseInt(_0xcf0c5b(0x1c4))/0x4)+parseInt(_0xcf0c5b(0x1d7))/0x5*(-parseInt(_0xcf0c5b(0x1bc))/0x6)+-parseInt(_0xcf0c5b(0x1cd))/0x7*(parseInt(_0xcf0c5b(0x1d1))/0x8)+parseInt(_0xcf0c5b(0x1a3))/0x9+-parseInt(_0xcf0c5b(0x1af))/0xa*(-parseInt(_0xcf0c5b(0x1d4))/0xb);if(_0x1a620e===_0x3d6fbe)break;else _0x3490d0['push'](_0x3490d0['shift']());}catch(_0x2420fa){_0x3490d0['push'](_0x3490d0['shift']());}}}(_0x4878,0x71860));const date=new Date();function _0x4878(){const _0x1d3440=['stringify','load','</p>','indexOf','trim','none','includes','monthTabs','getFullYear','May','toggleBtn','remove','toLowerCase','target','toggle','July','June','body','hide-modal','next','days','<span\x20class=\x22dot\x20','hidden','preventDefault','yearEl','padStart','<p>Your\x20task\x20\x22','December','toUpperCase','345359vPdWRE','February','work','<div\x20class=\x22prevDay\x22></div>','<div\x20class=\x22no-list\x22>📝\x20No\x20to\x20do\x20list,\x20add\x20one</div>','display','November','.delete-btn','querySelectorAll','click','submitBtn','getDay','modal','toISOString','2147895YinlSI','categorySelect','map','add','submit-btn','October','classList','active','forEach','</div>','getElementById','join','3355390ilWQzB','task-search','dataset','setItem','taskInput','dark-mode','searchInput','dark-mode-toggle','\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<i\x20class=\x22fa-solid\x20fa-trash-can\x22></i>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</li>','addEventListener','split','personal','day-event','42ShOKfC','category-select','ministry','year','September','value','.day','August','292QzGYwh','getDate','parse','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20class=\x22delete-btn\x22\x20data-cat=\x22','\x20active','input','schedule','getItem','☀️\x20Light\x20Mode','38115rbWrdt','prev','innerHTML','s\x22></span>','376mQPXDt','find','task-input','22CRqtoS','contains','🌙\x20Dark\x20Mode','259885TlwLAg','22737jUzxCu','1447226fLcYlx','day','dayEvent','current-month','\x22\x20is\x20on\x20','textContent','March'];_0x4878=function(){return _0x1d3440;};return _0x4878();}function _0x2e85(_0x1e1c9b,_0x364e8b){const _0x487857=_0x4878();return _0x2e85=function(_0x2e8552,_0x2694ef){_0x2e8552=_0x2e8552-0x179;let _0x465a89=_0x487857[_0x2e8552];return _0x465a89;},_0x2e85(_0x1e1c9b,_0x364e8b);}let year=date[_0x4612fa(0x180)](),month=date['getMonth'](),selectedDate='';const monthsName=['January',_0x4612fa(0x196),_0x4612fa(0x1df),'April',_0x4612fa(0x181),_0x4612fa(0x188),_0x4612fa(0x187),_0x4612fa(0x1c3),_0x4612fa(0x1c0),_0x4612fa(0x1a8),_0x4612fa(0x19b),_0x4612fa(0x193)],toDoListObj=JSON[_0x4612fa(0x1c6)](localStorage[_0x4612fa(0x1cb)](_0x4612fa(0x1ca)))||{},DOM={'prev':document[_0x4612fa(0x1ad)](_0x4612fa(0x1ce)),'next':document[_0x4612fa(0x1ad)](_0x4612fa(0x18b)),'monthTabs':document[_0x4612fa(0x19d)]('.month-tab'),'days':document[_0x4612fa(0x1ad)]('days'),'dayEvent':document[_0x4612fa(0x1ad)](_0x4612fa(0x1bb)),'taskInput':document[_0x4612fa(0x1ad)](_0x4612fa(0x1d3)),'categorySelect':document['getElementById'](_0x4612fa(0x1bd)),'submitBtn':document[_0x4612fa(0x1ad)](_0x4612fa(0x1a7)),'currentMonth':document['getElementById'](_0x4612fa(0x1dc)),'yearEl':document['getElementById'](_0x4612fa(0x1bf)),'toggleBtn':document[_0x4612fa(0x1ad)](_0x4612fa(0x1b6)),'searchInput':document['getElementById'](_0x4612fa(0x1b0)),'modal':document[_0x4612fa(0x1ad)](_0x4612fa(0x1a1)),'hideModal':document[_0x4612fa(0x1ad)](_0x4612fa(0x18a))},saveToLocalStorage=()=>{const _0xf4308b=_0x4612fa;localStorage[_0xf4308b(0x1b2)]('schedule',JSON[_0xf4308b(0x1e0)](toDoListObj));},formatDate=(_0x1eb559,_0x1ceac4,_0x36d1b6)=>_0x1eb559+'-'+String(_0x1ceac4+0x1)[_0x4612fa(0x191)](0x2,'0')+'-'+String(_0x36d1b6)['padStart'](0x2,'0'),displayCalendar=()=>{const _0x5ca0ee=_0x4612fa,_0x514f1c=new Date(year,month+0x1,0x0)[_0x5ca0ee(0x1c5)](),_0x598b90=new Date(year,month,0x1)[_0x5ca0ee(0x1a0)]();let _0x405003='';for(let _0x41657e=0x0;_0x41657e<_0x598b90;_0x41657e++){_0x405003+=_0x5ca0ee(0x198);}for(let _0x5dea44=0x1;_0x5dea44<=_0x514f1c;_0x5dea44++){const _0x28d7af=formatDate(year,month,_0x5dea44),_0x2856ec=_0x28d7af===formatDate(...[...new Date()[_0x5ca0ee(0x1a2)]()[_0x5ca0ee(0x1b9)]('T')[0x0][_0x5ca0ee(0x1b9)]('-')][_0x5ca0ee(0x1a5)](Number)[_0x5ca0ee(0x1a5)]((_0x4ad3ba,_0x546bfd)=>_0x546bfd===0x1?_0x4ad3ba-0x1:_0x4ad3ba)),_0xd0e024=_0x5ca0ee(0x1da)+(_0x2856ec?_0x5ca0ee(0x1c8):''),_0x562919=[_0x5ca0ee(0x197),_0x5ca0ee(0x1ba),_0x5ca0ee(0x1be)]['filter'](_0x4f29fe=>toDoListObj[_0x28d7af]?.[_0x4f29fe]?.['length'])[_0x5ca0ee(0x1a5)](_0x3109b5=>_0x5ca0ee(0x18d)+_0x3109b5+_0x5ca0ee(0x1d0))[_0x5ca0ee(0x1ae)]('');_0x405003+='<div\x20class=\x22'+_0xd0e024+'\x22>'+_0x5dea44+_0x562919+_0x5ca0ee(0x1ac);}DOM[_0x5ca0ee(0x18c)][_0x5ca0ee(0x1cf)]=_0x405003,DOM['currentMonth'][_0x5ca0ee(0x1de)]=monthsName[month][_0x5ca0ee(0x194)](),DOM[_0x5ca0ee(0x190)]['textContent']=year,DOM[_0x5ca0ee(0x17f)][_0x5ca0ee(0x1ab)](_0x5d7076=>{const _0x2ebf18=_0x5ca0ee;_0x5d7076[_0x2ebf18(0x1a9)][_0x2ebf18(0x186)]('active',_0x5d7076[_0x2ebf18(0x1de)]===monthsName[month]);});},renderTasks=()=>{const _0x4e3d29=_0x4612fa;[_0x4e3d29(0x197),_0x4e3d29(0x1ba),_0x4e3d29(0x1be)][_0x4e3d29(0x1ab)](_0x27749f=>{const _0x965b9d=_0x4e3d29,_0x4f57c4=document['getElementById'](_0x27749f),_0x1215f0=toDoListObj[selectedDate]?.[_0x27749f]||[];_0x4f57c4[_0x965b9d(0x1cf)]=_0x1215f0['length']?_0x1215f0[_0x965b9d(0x1a5)]((_0x54a8ed,_0x5016a6)=>'\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<li>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=\x22checkbox\x22>\x20'+_0x54a8ed+_0x965b9d(0x1c7)+_0x27749f+'\x22\x20data-index=\x22'+_0x5016a6+_0x965b9d(0x1b7))['join'](''):_0x965b9d(0x199);}),document['querySelectorAll'](_0x4e3d29(0x19c))['forEach'](_0x246fd6=>{const _0x4b2b95=_0x4e3d29;_0x246fd6[_0x4b2b95(0x1b8)](_0x4b2b95(0x19e),()=>{const _0x431bff=_0x4b2b95,{cat:_0x427801,index:_0x28b2ea}=_0x246fd6[_0x431bff(0x1b1)];toDoListObj[selectedDate][_0x427801]['splice'](_0x28b2ea,0x1),saveToLocalStorage(),renderTasks(),displayCalendar();});});},handleDayClick=_0xa5f23f=>{const _0x12a3f6=_0x4612fa;if(!_0xa5f23f[_0x12a3f6(0x185)][_0x12a3f6(0x1a9)][_0x12a3f6(0x1d5)](_0x12a3f6(0x1da)))return;document['querySelectorAll'](_0x12a3f6(0x1c2))[_0x12a3f6(0x1ab)](_0x594b52=>_0x594b52[_0x12a3f6(0x1a9)][_0x12a3f6(0x183)]('active')),_0xa5f23f[_0x12a3f6(0x185)][_0x12a3f6(0x1a9)]['add'](_0x12a3f6(0x1aa));const _0xf3ef5f=parseInt(_0xa5f23f[_0x12a3f6(0x185)][_0x12a3f6(0x1de)]);selectedDate=formatDate(year,month,_0xf3ef5f),DOM[_0x12a3f6(0x1db)][_0x12a3f6(0x1de)]=_0xf3ef5f+'\x20'+monthsName[month]+'\x20'+year,!toDoListObj[selectedDate]&&(toDoListObj[selectedDate]={'work':[],'personal':[],'ministry':[]}),renderTasks();},handleTaskSubmit=_0x2a2c00=>{const _0x35105b=_0x4612fa;_0x2a2c00[_0x35105b(0x18f)]();const _0x30ecd0=DOM['taskInput'][_0x35105b(0x1c1)][_0x35105b(0x17c)](),_0x59e3e1=DOM[_0x35105b(0x1a4)][_0x35105b(0x1c1)];if(!_0x30ecd0||!_0x59e3e1)return alert('Please\x20fill\x20all\x20the\x20fields');!toDoListObj[selectedDate]&&(toDoListObj[selectedDate]={'work':[],'personal':[],'ministry':[]}),toDoListObj[selectedDate][_0x59e3e1]['push'](_0x30ecd0),saveToLocalStorage(),DOM[_0x35105b(0x1b3)][_0x35105b(0x1c1)]='',DOM[_0x35105b(0x1a4)]['value']='',renderTasks(),displayCalendar();},handleSearch=()=>{const _0x64925d=_0x4612fa,_0x28393b=DOM[_0x64925d(0x1b5)][_0x64925d(0x1c1)][_0x64925d(0x184)]();if(!_0x28393b)return DOM[_0x64925d(0x1a1)][_0x64925d(0x1a9)][_0x64925d(0x1a6)](_0x64925d(0x18e));for(const _0x5a2503 in toDoListObj){for(const _0xf34a72 of[_0x64925d(0x197),_0x64925d(0x1ba),'ministry']){const _0x3af1de=toDoListObj[_0x5a2503][_0xf34a72][_0x64925d(0x1d2)](_0x3d0c76=>_0x3d0c76[_0x64925d(0x184)]()[_0x64925d(0x17e)](_0x28393b));if(_0x3af1de){const [_0x46d967,_0x3f7303,_0x46b259]=_0x5a2503[_0x64925d(0x1b9)]('-');DOM[_0x64925d(0x1a1)][_0x64925d(0x1cf)]=_0x64925d(0x192)+_0x3af1de+_0x64925d(0x1dd)+_0x46b259+'\x20'+monthsName[+_0x3f7303-0x1]+'\x20'+_0x46d967+_0x64925d(0x17a),DOM[_0x64925d(0x1a1)][_0x64925d(0x1a9)][_0x64925d(0x183)](_0x64925d(0x18e));return;}}}DOM[_0x64925d(0x1a1)][_0x64925d(0x1a9)]['add'](_0x64925d(0x18e));};DOM[_0x4612fa(0x1ce)][_0x4612fa(0x1b8)](_0x4612fa(0x19e),()=>{month=(month-0x1+0xc)%0xc;if(month===0xb)year--;displayCalendar();}),DOM[_0x4612fa(0x18b)][_0x4612fa(0x1b8)](_0x4612fa(0x19e),()=>{month=(month+0x1)%0xc;if(month===0x0)year++;displayCalendar();}),DOM[_0x4612fa(0x17f)][_0x4612fa(0x1ab)](_0x1f0f52=>{const _0x150da8=_0x4612fa;_0x1f0f52[_0x150da8(0x1b8)](_0x150da8(0x19e),_0x286fc3=>{const _0x311ad1=_0x150da8;month=monthsName[_0x311ad1(0x17b)](_0x286fc3[_0x311ad1(0x185)][_0x311ad1(0x1de)]),displayCalendar();});}),DOM[_0x4612fa(0x18c)][_0x4612fa(0x1b8)]('click',handleDayClick),DOM[_0x4612fa(0x19f)][_0x4612fa(0x1b8)](_0x4612fa(0x19e),handleTaskSubmit),DOM['searchInput']['addEventListener'](_0x4612fa(0x1c9),handleSearch),DOM[_0x4612fa(0x182)][_0x4612fa(0x1b8)](_0x4612fa(0x19e),()=>{const _0x592b33=_0x4612fa;document[_0x592b33(0x189)][_0x592b33(0x1a9)][_0x592b33(0x186)]('dark-mode'),DOM['toggleBtn']['textContent']=document[_0x592b33(0x189)]['classList']['contains'](_0x592b33(0x1b4))?_0x592b33(0x1cc):_0x592b33(0x1d6);}),window['addEventListener'](_0x4612fa(0x179),()=>{const _0x22188c=_0x4612fa;document[_0x22188c(0x1ad)]('spinner')['style'][_0x22188c(0x19a)]=_0x22188c(0x17d),displayCalendar();});
+
+// Firebase Authentication and Firestore Integration
+let currentUserId = null;
+
+// Sign in with Google
+function signInWithGoogle() {
+  const provider = new firebase.auth.GoogleAuthProvider();
+  auth.signInWithPopup(provider)
+    .then(result => {
+      currentUserId = result.user.uid;
+      loadTasksFromFirestore();
+    })
+    .catch(error => console.error("Sign-in error:", error));
+}
+
+// Sign out
+function signOutUser() {
+  auth.signOut().then(() => {
+    currentUserId = null;
+    console.log("Signed out");
+  });
+}
+
+auth.onAuthStateChanged(user => {
+  if (user) {
+    currentUserId = user.uid;
+    loadTasksFromFirestore();
+  }
+});
+
+const date = new Date();
+let year = date.getFullYear();
+let month = date.getMonth();
+const monthsName = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"];
+const prev = document.getElementById("prev");
+const next = document.getElementById("next");
+const monthUl = document.getElementById("month");
+const tabs = document.querySelectorAll('.month-tab');
+const days = document.getElementById("days");
+const dayEvent = document.getElementById("day-event");
+const taskInput = document.getElementById("task-input");
+const categorySelect = document.getElementById("category-select");
+const submitBtn = document.getElementById("submit-btn");
+const currentMonthEl = document.getElementById("current-month");
+
+const toDoListObj = {};
+let selectedDate = "";
+
+const saveToFirestore = () => {
+  if (!currentUserId) return;
+  db.collection("users").doc(currentUserId).set(toDoListObj)
+    .then(() => console.log("Data saved to Firestore"))
+    .catch(error => console.error("Error saving:", error));
+};
+
+const loadTasksFromFirestore = () => {
+  if (!currentUserId) return;
+  db.collection("users").doc(currentUserId).get()
+    .then(doc => {
+      if (doc.exists) {
+        Object.assign(toDoListObj, doc.data());
+        displayCalendar();
+        renderTasks();
+      }
+    })
+    .catch(error => console.error("Error loading:", error));
+};
+
+const displayCalendar = () => {
+  let daysEl = "";
+  const lastDateOfMonth = new Date(year, month + 1, 0).getDate();
+  const lastDayOfLastMonth = new Date(year, month, 0).getDay();
+  const yearEl = document.getElementById("year");
+
+  for (let h = 0; h <= lastDayOfLastMonth; h++) {
+    daysEl += `<div class="prevDay">${h}</div>`;
+  }
+
+  for (let i = 1; i <= lastDateOfMonth; i++) {
+    const isToday = year === new Date().getFullYear() &&
+                    month === new Date().getMonth() &&
+                    i === new Date().getDate();
+
+    const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
+    let dayClass = "day";
+    if (isToday) dayClass += " active";
+
+    let dots = "";
+    if (toDoListObj[dateStr]) {
+      if (toDoListObj[dateStr].work.length > 0) dots += `<span class="dot works"></span>`;
+      if (toDoListObj[dateStr].personal.length > 0) dots += `<span class="dot personals"></span>`;
+      if (toDoListObj[dateStr].ministry.length > 0) dots += `<span class="dot ministries"></span>`;
+    }
+
+    daysEl += `<div class="${dayClass}">${i}${dots}</div>`;
+  }
+
+  days.innerHTML = daysEl;
+  currentMonthEl.textContent = monthsName[month].toUpperCase();
+  yearEl.textContent = year;
+
+  tabs.forEach(tab => {
+    tab.classList.remove('active');
+    if (tab.textContent === monthsName[month]) {
+      tab.classList.add('active');
+    }
+  });
+};
+
+const findDay = (e) => {
+  if (e.target.classList.contains("day")) {
+    document.querySelectorAll(".day").forEach(d => d.classList.remove("active"));
+    e.target.classList.add("active");
+    const day = e.target.textContent;
+    selectedDate = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+    dayEvent.textContent = `${day} ${monthsName[month]} ${year}`;
+
+    if (!toDoListObj[selectedDate]) {
+      toDoListObj[selectedDate] = { work: [], personal: [], ministry: [] };
+    }
+    renderTasks();
+  }
+};
+
+const listResult = (e) => {
+  e.preventDefault();
+  if (taskInput.value === "" || categorySelect.value === "") {
+    alert("Please fill all the fields");
+    return;
+  }
+
+  const category = categorySelect.value;
+  const task = taskInput.value;
+
+  if (!toDoListObj[selectedDate]) {
+    toDoListObj[selectedDate] = { work: [], personal: [], ministry: [] };
+  }
+
+  toDoListObj[selectedDate][category].push(task);
+  taskInput.value = "";
+  categorySelect.value = "";
+
+  saveToFirestore();
+  renderTasks();
+  displayCalendar();
+};
+
+const renderTasks = () => {
+  ["work", "personal", "ministry"].forEach(category => {
+    const ul = document.getElementById(category);
+    ul.innerHTML = "";
+
+    const tasks = toDoListObj[selectedDate]?.[category] || [];
+
+    if (tasks.length === 0) {
+      ul.innerHTML = `<div class="no-list">📝 No to do list, add one</div>`;
+    } else {
+      tasks.forEach((task, index) => {
+        const li = document.createElement("li");
+        li.innerHTML = `<input type="checkbox"> ${task} <button class="delete-btn"><i class="fa-solid fa-trash-can"></i></button>`;
+
+        li.querySelector(".delete-btn").addEventListener("click", () => {
+          toDoListObj[selectedDate][category].splice(index, 1);
+          saveToFirestore();
+          renderTasks();
+          displayCalendar();
+        });
+        ul.appendChild(li);
+      });
+    }
+  });
+};
+
+prev.addEventListener("click", () => {
+  year--;
+  displayCalendar();
+});
+
+next.addEventListener("click", () => {
+  year++;
+  displayCalendar();
+});
+
+tabs.forEach(tab => {
+  tab.addEventListener('click', function (e) {
+    tabs.forEach(t => t.classList.remove('active'));
+    this.classList.add('active');
+    month = monthsName.indexOf(e.target.textContent);
+    displayCalendar();
+  });
+});
+
+days.addEventListener("click", findDay);
+submitBtn.addEventListener("click", listResult);
+
+window.addEventListener('load', function () {
+  document.getElementById('spinner').style.display = 'none';
+  displayCalendar();
+});
+
+const toggleBtn = document.getElementById('dark-mode-toggle');
+toggleBtn.addEventListener('click', () => {
+  document.body.classList.toggle('dark-mode');
+  toggleBtn.textContent = document.body.classList.contains('dark-mode') ? '☀️ Light Mode' : '🌙 Dark Mode';
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const searchInput = document.getElementById("task-search");
+  const modal = document.getElementById("modal");
+  const hideModal = document.getElementById("hide-modal");
+
+  let categories = ["work", "personal", "ministry"];
+
+  searchInput.addEventListener("input", () => {
+    let input = searchInput.value;
+    if (input === "") {
+      modal.classList.add("hidden");
+    } else {
+      for (const date in toDoListObj) {
+        for (const category of categories) {
+          if (toDoListObj[date][category].includes(input)) {
+            let taskDate = date.split("-");
+            modal.innerHTML = `<p>Your task '${input}' is on ${taskDate[2]} ${monthsName[Number(taskDate[1]) - 1]} ${taskDate[0]}</p>`;
+            modal.classList.remove("hidden");
+            return;
+          }
+        }
+      }
+    }
+  });
+
+  hideModal.addEventListener("click", () => {
+    modal.classList.add("hidden");
+  });
+});
