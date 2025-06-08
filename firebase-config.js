@@ -1,11 +1,11 @@
 // Replace with your actual Firebase config
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT_ID.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyAyue6f2DxitwROj17_1proL5tbpHZCS6w",
+  authDomain: "calendar-and-to-do-list-3c259.firebaseapp.com",
+  projectId: "calendar-and-to-do-list-3c259",
+  storageBucket: "calendar-and-to-do-list-3c259.firebasestorage.app",
+  messagingSenderId: "646469824544",
+  appId: "1:646469824544:web:05cb2e0fe46827bad8cc45"
 };
 
 // Initialize Firebase
