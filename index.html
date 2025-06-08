@@ -5,17 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Calendar</title>
   <link rel="stylesheet" href="calendar.css" />
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js"></script>
+
+  <!-- Your Firebase config -->
+  <script src="firebase-config.js"></script>
+
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <script src="https://kit.fontawesome.com/a3502f08c4.js" crossorigin="anonymous"></script>
-<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js"></script>
-
 </head>
 <body>
   <div id="spinner" class="spinner-overlay">
     <div class="spinner"></div>
   </div>
-<button id="dark-mode-toggle" class="dark-toggle">🌙 Toggle Dark Mode</button>
+
+  <!-- Dark Mode Toggle -->
+  <button id="dark-mode-toggle" class="dark-toggle">🌙 Toggle Dark Mode</button>
+
+  <!-- Firebase Auth Buttons -->
+  <div style="margin: 10px;">
+    <button onclick="signInWithGoogle()">🔐 Sign In with Google</button>
+    <button onclick="signOutUser()">🚪 Sign Out</button>
+  </div>
+
   <div class="calendar-container">
     <aside class="sidebar">
       <i id="prev" class="fa-solid fa-angle-left"></i><span id="year">2020</span><i id="next" class="fa-solid fa-angle-right"></i>
@@ -45,17 +61,16 @@
 
     <aside class="details">
       <h3 id="day-event"></h3>
-      
+
       <form id="task-form">
         <input type="text" id="task-search" placeholder="🔍 Search tasks..." />
         <div id="modal" class="modal hidden">
           <p>Task comment's date is 22 June 2025</p>
+          <button id="hide-modal">Close</button>
         </div>
         <input type="text" id="task-input" placeholder="Enter new task" required />
-       
         <select id="category-select" required>
-          <option value="" disabled selected>Select category</option>
-          <option value="work">Work</option>
+         ">Work</option>
           <option value="personal">Personal</option>
           <option value="ministry">Ministry</option>
         </select>
@@ -63,10 +78,10 @@
       </form>
 
       <div id="to-do-list">
-        <!-- Categories -->
         <div class="category work">
           <h2><span class="dot works"></span> Work</h2>
-          <ul class="todo-list"id="work"><div class="no-list">📝 No to do list, add one</div>
+          <ul class="todo-list" id="work">
+            <div class="no-list">📝 No to do list, add one</div>
           </ul>
         </div>
 
@@ -86,6 +101,8 @@
       </div>
     </aside>
   </div>
-<script src="calendar.js"></script>  
+
+  <!-- Your main JS -->
+  <script src="calendar.js"></script>
 </body>
 </html>
