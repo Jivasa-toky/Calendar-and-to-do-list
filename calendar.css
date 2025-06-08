@@ -356,6 +356,26 @@ body.dark-mode .no-list {
   border-radius: 4px;
 }
 
+/* Firebase Auth Buttons */
+button[onclick*="signInWithGoogle"],
+button[onclick*="signOutUser"] {
+  padding: 10px 16px;
+  margin: 10px 5px;
+  font-size: 14px;
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button[onclick*="signInWithGoogle"]:hover,
+button[onclick*="signOutUser"]:hover {
+  background-color: #7a4fff;
+}
+
+
 /* Responsive */
 @media (max-width: 768px) {
   body {
