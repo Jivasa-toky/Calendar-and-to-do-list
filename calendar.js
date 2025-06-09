@@ -21,6 +21,9 @@ function signOutUser() {
   });
 }
 
+window.singIngInWithGoogle = singInWithGoogle;
+window.singOutUser= singOutUser;
+
 auth.onAuthStateChanged(user => {
   if (user) {
     currentUserId = user.uid;
