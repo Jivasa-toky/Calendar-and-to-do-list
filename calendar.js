@@ -1,11 +1,17 @@
-
 // Firebase Authentication and Firestore Integration
+const auth = window.auth;
+const db = window.db;
+const GoogleAuthProvider = window.GoogleAuthProvider;
+const signInWithPopup = window.signInWithPopup;
+const signOut = window.signOut;
+const onAuthStateChanged = window.onAuthStateChanged;
+
 let currentUserId = null;
 
 // Sign in with Google
 function signInWithGoogle() {
-  const provider = new firebase.auth.GoogleAuthProvider();
-  auth.signInWithPopup(provider)
+  const provider = new GoogleAuthProvider();
+  signInWithPopup(auth, provider)
     .then(result => {
       currentUserId = result.user.uid;
       loadTasksFromFirestore();
@@ -15,16 +21,16 @@ function signInWithGoogle() {
 
 // Sign out
 function signOutUser() {
-  auth.signOut().then(() => {
+  signOut(auth).then(() => {
     currentUserId = null;
     console.log("Signed out");
   });
 }
 
 window.signInWithGoogle = signInWithGoogle;
-window.singOutUser= singOutUser;
+window.signOutUser = signOutUser;
 
-auth.onAuthStateChanged(user => {
+onAuthStateChanged(auth, user => {
   if (user) {
     currentUserId = user.uid;
     loadTasksFromFirestore();
@@ -115,7 +121,7 @@ const findDay = (e) => {
   if (e.target.classList.contains("day")) {
     document.querySelectorAll(".day").forEach(d => d.classList.remove("active"));
     e.target.classList.add("active");
-    const day = e.target.textContent;
+    const day = e.target.childNodes[0].nodeValue.trim();
     selectedDate = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
     dayEvent.textContent = `${day} ${monthsName[month]} ${year}`;
 
@@ -216,13 +222,13 @@ document.addEventListener("DOMContentLoaded", () => {
   let categories = ["work", "personal", "ministry"];
 
   searchInput.addEventListener("input", () => {
-    let input = searchInput.value;
+    let input = searchInput.value.trim().toLowerCase();
     if (input === "") {
       modal.classList.add("hidden");
     } else {
       for (const date in toDoListObj) {
         for (const category of categories) {
-          if (toDoListObj[date][category].includes(input)) {
+          if (toDoListObj[date][category].some(task => task.toLowerCase().includes(input))) {
             let taskDate = date.split("-");
             modal.innerHTML = `<p>Your task '${input}' is on ${taskDate[2]} ${monthsName[Number(taskDate[1]) - 1]} ${taskDate[0]}</p>`;
             modal.classList.remove("hidden");
