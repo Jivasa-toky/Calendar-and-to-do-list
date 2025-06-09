@@ -36,7 +36,19 @@ function signOutUser() {
 window.signInWithGoogle = signInWithGoogle;
 window.signOutUser = signOutUser;
 
-onAuthStateChanged(auth, user => {
+document.getElementById("sign-in").addEventListener("click", () => {
+  signInWithGoogle();
+  document.getElementById("sign-out").classList.toggle("hidden");
+  document.getElementById("sign-in").classList.toggle("hidden");
+});
+
+document.getElementById("sign-out").addEventListener("click", () => {
+  signOutUser();
+  document.getElementById("sign-out").classList.toggle("hidden");
+  document.getElementById("sign-in").classList.toggle("hidden");
+});
+
+window.onAuthStateChanged(auth, user => {
   if (user) {
     currentUserId = user.uid;
     loadTasksFromFirestore();
