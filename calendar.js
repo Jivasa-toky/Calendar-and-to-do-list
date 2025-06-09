@@ -20,7 +20,7 @@ function signInWithGoogle() {
       loadTasksFromFirestore();
     })
     .catch(error => console.error("Sign-in error:", error)
-    )}
+    )
     .finally(() => {
       isSigningIn = false;
     });
