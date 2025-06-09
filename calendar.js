@@ -7,18 +7,24 @@ const signOut = window.signOut;
 const onAuthStateChanged = window.onAuthStateChanged;
 
 let currentUserId = null;
+let isSigningIn = false;
 
 // Sign in with Google
 function signInWithGoogle() {
+  if(isSigningIn) return;
+  isSigningIn = true;
   const provider = new GoogleAuthProvider();
   signInWithPopup(auth, provider)
     .then(result => {
       currentUserId = result.user.uid;
       loadTasksFromFirestore();
     })
-    .catch(error => console.error("Sign-in error:", error));
+    .catch(error => console.error("Sign-in error:", error)
+    )}
+    .finally(() => {
+      isSigningIn = false;
+    });
 }
-
 // Sign out
 function signOutUser() {
   signOut(auth).then(() => {
