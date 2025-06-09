@@ -100,7 +100,11 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
     import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
     import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-
+    
+    import { initializeApp } from "firebase/app";
+    import { initializeAppCheck, ReCaptchaV3Provider } from "firebase/app-check";
+    
+// Pass your reCAPTCHA v3 site key (public key) to activate()
     const firebaseConfig = {
       apiKey: "AIzaSyAyue6f2DxitwROj17_1proL5tbpHZCS6w",
       authDomain: "calendar-and-to-do-list-3c259.firebaseapp.com",
@@ -113,6 +117,14 @@
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const db = getFirestore(app);
+
+    const appCheck = initializeAppCheck(app, {
+  provider: new ReCaptchaV3Provider('abcdefghijklmnopqrstuvwxy-1234567890abcd'),
+
+  // Optional argument. If true, the SDK automatically refreshes App Check
+  // tokens as needed.
+  isTokenAutoRefreshEnabled: true
+})
 
     window.auth = auth;
     window.db = db;
