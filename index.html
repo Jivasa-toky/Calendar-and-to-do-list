@@ -59,12 +59,14 @@
           <p>Task comment's date is 22 June 2025</p>
           <button id="hide-modal">Close</button>
         </div>
-        <input type="text" id="task-input" placeholder="Enter new task" required />
-        <select id="category-select" required>
-         ">Work</option>
-          <option value="personal">Personal</option>
-          <option value="ministry">Ministry</option>
-        </select>
+        <input type="text" id="task-input" placeholder="Enter new task" required /><select id="category-select" required>
+  <option value="" disabled selected>Select category</option>
+  <option value="work">Work</option>
+  <option value="personal">Personal</option>
+  <option value="ministry">Ministry</option>
+</select>
+
+
         <button id="submit-btn">Add Task</button>
       </form>
 
@@ -91,7 +93,37 @@
         </div>
       </div>
     </aside>
-  </div>  <!-- Main JS -->
+  </div> 
+  <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+  import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT_ID.appspot.com",
+    messagingSenderId: "YOUR_SENDER_ID",
+    appId: "YOUR_APP_ID"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
+  // Make Firebase services globally accessible
+  window.auth = auth;
+  window.db = db;
+  window.GoogleAuthProvider = GoogleAuthProvider;
+  window.signInWithPopup = signInWithPopup;
+  window.onAuthStateChanged = onAuthStateChanged;
+  window.signOut = signOut;
+  window.setDoc = setDoc;
+  window.getDoc = getDoc;
+  window.doc = doc;
+</script>
+  <!-- Main JS -->
   <script type="module" src="calendar.js"></script>
 </body>
 </html>
