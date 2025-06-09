@@ -10,10 +10,7 @@
   <script src="https://kit.fontawesome.com/a3502f08c4.js" crossorigin="anonymous"></script>
   
 <!-- Firebase App (core) -->
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
-  <!-- Firebase App Check -->
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-check.js"></script>
-  <!-- Add other Firebase services as needed -->
+  
 </head>
 <body>
   <!-- Header with Auth Buttons and Dark Mode Toggle -->
@@ -106,9 +103,8 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
     import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
     import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-    
-    import { initializeApp } from "firebase/app";
-    import { initializeAppCheck, ReCaptchaV3Provider } from "firebase/app-check";
+
+    import { initializeAppCheck, ReCaptchaV3Provider } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app-check.js";
     
 // Pass your reCAPTCHA v3 site key (public key) to activate()
     const firebaseConfig = {
