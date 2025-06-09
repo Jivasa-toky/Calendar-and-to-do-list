@@ -21,7 +21,7 @@ function signOutUser() {
   });
 }
 
-window.singIngInWithGoogle = singInWithGoogle;
+window.singInWithGoogle = singInWithGoogle;
 window.singOutUser= singOutUser;
 
 auth.onAuthStateChanged(user => {
