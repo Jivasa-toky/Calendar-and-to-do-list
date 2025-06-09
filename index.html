@@ -5,24 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Calendar</title>
   <link rel="stylesheet" href="calendar.css" />
-  <link rel="icon" href="calendar.png"> <!-- Font Awesome -->
+  <link rel="icon" href="calendar.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <script src="https://kit.fontawesome.com/a3502f08c4.js" crossorigin="anonymous"></script>
 </head>
 <body>
+  <!-- Header with Auth Buttons and Dark Mode Toggle -->
+  <header class="top-bar">
+    <div class="auth-buttons">
+      <button onclick="signInWithGoogle()">🔐 Sign In</button>
+      <button onclick="signOutUser()">🚪 Sign Out</button>
+    </div>
+    <button id="dark-mode-toggle" class="dark-toggle">🌙</button>
+  </header>
+
+  <!-- Spinner -->
   <div id="spinner" class="spinner-overlay">
     <div class="spinner"></div>
   </div>
 
-  <!-- Dark Mode Toggle -->
-  <button id="dark-mode-toggle" class="dark-toggle">🌙 Toggle Dark Mode</button>
-
-  <!-- Firebase Auth Buttons -->
-  <div style="margin: 10px;">
-    <button onclick="signInWithGoogle()">🔐 Sign In with Google</button>
-    <button class="hidden" onclick="signOutUser()">🚪 Sign Out</button>
-  </div>
-
+  <!-- Main Calendar Layout -->
   <div class="calendar-container">
     <aside class="sidebar">
       <i id="prev" class="fa-solid fa-angle-left"></i><span id="year">2020</span><i id="next" class="fa-solid fa-angle-right"></i>
@@ -52,21 +54,19 @@
 
     <aside class="details">
       <h3 id="day-event"></h3>
-
       <form id="task-form">
         <input type="text" id="task-search" placeholder="🔍 Search tasks..." />
         <div id="modal" class="modal hidden">
           <p>Task comment's date is 22 June 2025</p>
           <button id="hide-modal">Close</button>
         </div>
-        <input type="text" id="task-input" placeholder="Enter new task" required /><select id="category-select" required>
-  <option value="" disabled selected>Select category</option>
-  <option value="work">Work</option>
-  <option value="personal">Personal</option>
-  <option value="ministry">Ministry</option>
-</select>
-
-
+        <input type="text" id="task-input" placeholder="Enter new task" required />
+        <select id="category-select" required>
+          <option value="" disabled selected>Select category</option>
+          <option value="work">Work</option>
+          <option value="personal">Personal</option>
+          <option value="ministry">Ministry</option>
+        </select>
         <button id="submit-btn">Add Task</button>
       </form>
 
@@ -93,37 +93,37 @@
         </div>
       </div>
     </aside>
-  </div> 
+  </div>
+
+  <!-- Firebase -->
   <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-  import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-  import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+    import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-  const firebaseConfig = {
-  apiKey: "AIzaSyAyue6f2DxitwROj17_1proL5tbpHZCS6w",
-  authDomain: "calendar-and-to-do-list-3c259.firebaseapp.com",
-  projectId: "calendar-and-to-do-list-3c259",
-  storageBucket: "calendar-and-to-do-list-3c259.firebasestorage.app",
-  messagingSenderId: "646469824544",
-  appId: "1:646469824544:web:05cb2e0fe46827bad8cc45"
-};
+    const firebaseConfig = {
+      apiKey: "AIzaSyAyue6f2DxitwROj17_1proL5tbpHZCS6w",
+      authDomain: "calendar-and-to-do-list-3c259.firebaseapp.com",
+      projectId: "calendar-and-to-do-list-3c259",
+      storageBucket: "calendar-and-to-do-list-3c259.firebasestorage.app",
+      messagingSenderId: "646469824544",
+      appId: "1:646469824544:web:05cb2e0fe46827bad8cc45"
+    };
 
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-  const db = getFirestore(app);
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
 
-  // Make Firebase services globally accessible
-  window.auth = auth;
-  window.db = db;
-  window.GoogleAuthProvider = GoogleAuthProvider;
-  window.signInWithPopup = signInWithPopup;
-  window.onAuthStateChanged = onAuthStateChanged;
-  window.signOut = signOut;
-  window.setDoc = setDoc;
-  window.getDoc = getDoc;
-  window.doc = doc;
-</script>
-  <!-- Main JS -->
+    window.auth = auth;
+    window.db = db;
+    window.GoogleAuthProvider = GoogleAuthProvider;
+    window.signInWithPopup = signInWithPopup;
+    window.onAuthStateChanged = onAuthStateChanged;
+    window.signOut = signOut;
+    window.setDoc = setDoc;
+    window.getDoc = getDoc;
+    window.doc = doc;
+  </script>
   <script type="module" src="calendar.js"></script>
 </body>
 </html>
