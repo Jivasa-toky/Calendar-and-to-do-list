@@ -1,65 +1,37 @@
+import { protectPage } from './dashboard.js';
+import { auth, db } from './login.js';
+import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js';
+import {
+  collection,
+  doc,
+  setDoc,
+  getDoc
+} from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
+
+document.addEventListener("DOMContentLoaded", () => {
+  protectPage();
+});
+
 // Firebase Authentication and Firestore Integration
-const auth = window.auth;
-const db = window.db;
-const GoogleAuthProvider = window.GoogleAuthProvider;
-const signInWithPopup = window.signInWithPopup;
-const signOut = window.signOut;
-const onAuthStateChanged = window.onAuthStateChanged;
-
 let currentUserId = null;
-let isSigningIn = false;
 
-// Sign in with Google
-function signInWithGoogle() {
-  if(isSigningIn) return;
-  isSigningIn = true;
-  const provider = new GoogleAuthProvider();
-  signInWithPopup(auth, provider)
-    .then(result => {
-      currentUserId = result.user.uid;
-      loadTasksFromFirestore();
-    })
-    .catch(error => console.error("Sign-in error:", error)
-    )
-    .finally(() => {
-      isSigningIn = false;
-    });
-}
-// Sign out
-function signOutUser() {
-  signOut(auth).then(() => {
-    currentUserId = null;
-    console.log("Signed out");
-  });
-}
-
-window.signInWithGoogle = signInWithGoogle;
-window.signOutUser = signOutUser;
-
-document.getElementById("sign-in").addEventListener("click", () => {
-  signInWithGoogle();
-  document.getElementById("sign-out").classList.toggle("hidden");
-  document.getElementById("sign-in").classList.toggle("hidden");
-});
-
-document.getElementById("sign-out").addEventListener("click", () => {
-  signOutUser();
-  document.getElementById("sign-out").classList.toggle("hidden");
-  document.getElementById("sign-in").classList.toggle("hidden");
-});
-
-window.onAuthStateChanged(auth, user => {
+onAuthStateChanged(auth, user => {
   if (user) {
     currentUserId = user.uid;
     loadTasksFromFirestore();
+  } else {
+    currentUserId = null;
+    // Optionally redirect to login page or show login form
   }
 });
 
 const date = new Date();
 let year = date.getFullYear();
 let month = date.getMonth();
-const monthsName = ["January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December"];
+const monthsName = [
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
 const prev = document.getElementById("prev");
 const next = document.getElementById("next");
 const monthUl = document.getElementById("month");
@@ -74,24 +46,30 @@ const currentMonthEl = document.getElementById("current-month");
 const toDoListObj = {};
 let selectedDate = "";
 
-const saveToFirestore = () => {
+// MODULAR FIRESTORE: Use setDoc/doc/collection
+const saveToFirestore = async () => {
   if (!currentUserId) return;
-  db.collection("users").doc(currentUserId).set(toDoListObj)
-    .then(() => console.log("Data saved to Firestore"))
-    .catch(error => console.error("Error saving:", error));
+  try {
+    await setDoc(doc(collection(db, "users"), currentUserId), toDoListObj);
+    console.log("Data saved to Firestore");
+  } catch (error) {
+    console.error("Error saving:", error);
+  }
 };
 
-const loadTasksFromFirestore = () => {
+// MODULAR FIRESTORE: Use getDoc/doc/collection
+const loadTasksFromFirestore = async () => {
   if (!currentUserId) return;
-  db.collection("users").doc(currentUserId).get()
-    .then(doc => {
-      if (doc.exists) {
-        Object.assign(toDoListObj, doc.data());
-        displayCalendar();
-        renderTasks();
-      }
-    })
-    .catch(error => console.error("Error loading:", error));
+  try {
+    const docSnap = await getDoc(doc(collection(db, "users"), currentUserId));
+    if (docSnap.exists()) {
+      Object.assign(toDoListObj, docSnap.data());
+      displayCalendar();
+      renderTasks();
+    }
+  } catch (error) {
+    console.error("Error loading:", error);
+  }
 };
 
 const displayCalendar = () => {
@@ -106,8 +84,8 @@ const displayCalendar = () => {
 
   for (let i = 1; i <= lastDateOfMonth; i++) {
     const isToday = year === new Date().getFullYear() &&
-                    month === new Date().getMonth() &&
-                    i === new Date().getDate();
+      month === new Date().getMonth() &&
+      i === new Date().getDate();
 
     const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
     let dayClass = "day";
